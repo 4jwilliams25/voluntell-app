@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Dashboard from './components/dashboard/dashboard';
 import TopNav from './components/layout/TopNav';
+import { connect } from "react-redux";
 
 function App() {
   const [ users, setUsers ] = useState([])
-  console.log("USERS:", users)
+  const [ events, setEvents ] = useState([])
+  const [ userEvents, setUserEvents ] = useState()
 
   useEffect(() => {
-    axios.get('http://localhost:8000/users').then(res => setUsers(res.data))
+    // set up app local store
   }, [])
 
   return (
@@ -19,4 +21,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect()(App);

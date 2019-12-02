@@ -1,86 +1,86 @@
 import axios from "axios"
-import { GET_USERS_PENDING, GET_USERS_SUCCESS, GET_USERS_FAILED, ADD_USER_PENDING, ADD_USER_SUCCESS, ADD_USER_FAILED, UPDATE_USER_PENDING, UPDATE_USER_SUCCESS, UPDATE_USER_FAILED, DELETE_USER_PENDING, DELETE_USER_SUCCESS, DELETE_USER_FAILED } from "./constants"
+import { GET_EVENTS_PENDING, GET_EVENTS_SUCCESS, GET_EVENTS_FAILED, ADD_EVENT_PENDING, ADD_EVENT_SUCCESS, ADD_EVENT_FAILED, UPDATE_EVENT_PENDING, UPDATE_EVENT_SUCCESS, UPDATE_EVENT_FAILED, DELETE_EVENT_PENDING, DELETE_EVENT_SUCCESS, DELETE_EVENT_FAILED } from "./constants"
 
-export const getUsers = () => {
+export const getEvents = () => {
     return dispatch => {
         dispatch({
-            type: GET_USERS_PENDING
+            type: GET_EVENTS_PENDING
         });
         axios
-            .get("http://localhost:8000/users")
+            .get("http://localhost:8000/events")
             .then(res => {
                 dispatch({
-                    type: GET_USERS_SUCCESS,
+                    type: GET_EVENTS_SUCCESS,
                     payload: res.data
                 })
             })
             .catch(err => {
                 dispatch({
-                    type: GET_USERS_FAILED,
+                    type: GET_EVENTS_FAILED,
                     payload: err
                 })
             })
     }
 }
 
-export const addUser = (newUser) => {
+export const addEvent = (newEvent) => {
     return dispatch => {
         dispatch({
-            type: ADD_USER_PENDING
+            type: ADD_EVENT_PENDING
         });
         axios
-            .post("http://localhost:8000/users", newUser)
+            .post("http://localhost:8000/events", newEvent)
             .then(res => {
                 dispatch({
-                    type: ADD_USER_SUCCESS,
+                    type: ADD_EVENT_SUCCESS,
                     payload: res.data
                 })
             })
             .catch(err => {
                 dispatch({
-                    type: ADD_USER_FAILED,
+                    type: ADD_EVENT_FAILED,
                     payload: err
                 })
             })
     }
 }
 
-export const updateUser = (updatedInfo, id) => {
+export const updateEvent = (updatedInfo, id) => {
     return dispatch => {
         dispatch({
-            type: UPDATE_USER_PENDING
+            type: UPDATE_EVENT_PENDING
         });
-        axios.patch(`http://localhost:8000/users/${id}`, updatedInfo)
+        axios.patch(`http://localhost:8000/events/${id}`, updatedInfo)
         .then(res => {
             dispatch({
-                type: UPDATE_USER_SUCCESS,
+                type: UPDATE_EVENT_SUCCESS,
                 payload: res.data
             })
         })
         .catch(err => {
             dispatch({
-                type: UPDATE_USER_FAILED,
+                type: UPDATE_EVENT_FAILED,
                 payload: err
             })
         })
     }
 }
 
-export const removeUser = (id) => {
+export const removeEvent = (id) => {
     return dispatch => {
         dispatch({
-            type: DELETE_USER_PENDING
+            type: DELETE_EVENT_PENDING
         });
-        axios.delete(`http://localhost:8000/users/${id}`)
+        axios.delete(`http://localhost:8000/events/${id}`)
         .then(res => {
             dispatch({
-                type: DELETE_USER_SUCCESS,
+                type: DELETE_EVENT_SUCCESS,
                 payload: res.data
             })
         })
         .catch(err => {
             dispatch({
-                type: DELETE_USER_FAILED,
+                type: DELETE_EVENT_FAILED,
                 payload: err
             })
         })
