@@ -33,7 +33,7 @@ export const addEvent = (newEvent) => {
             .then(res => {
                 dispatch({
                     type: ADD_EVENT_SUCCESS,
-                    payload: res.data
+                    payload: res.data[0]
                 })
             })
             .catch(err => {
@@ -54,7 +54,7 @@ export const updateEvent = (updatedInfo, id) => {
         .then(res => {
             dispatch({
                 type: UPDATE_EVENT_SUCCESS,
-                payload: res.data
+                payload: res.data[0]
             })
         })
         .catch(err => {
@@ -75,7 +75,7 @@ export const removeEvent = (id) => {
         .then(res => {
             dispatch({
                 type: DELETE_EVENT_SUCCESS,
-                payload: res.data
+                payload: res.data[0]
             })
         })
         .catch(err => {

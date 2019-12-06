@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
       table.string('name').notNullable();
       table.string('organization').notNullable();
       table.string('description').notNullable();
-      table.integer('volunteers-needed').notNullable()
+      table.integer('volunteers_needed').notNullable()
       table.timestamps(true, true)
   })
 };

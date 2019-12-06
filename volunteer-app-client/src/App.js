@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import Dashboard from './components/dashboard/dashboard';
 import TopNav from './components/layout/TopNav';
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
+import { getUsers } from './store/users/actions';
+import { getEvents } from './store/events/actions';
+import { getUserEvents } from './store/user-events/actions';
 
 function App() {
-  const [ users, setUsers ] = useState([])
-  const [ events, setEvents ] = useState([])
-  const [ userEvents, setUserEvents ] = useState()
+
+const dispatch = useDispatch()
 
   useEffect(() => {
-    // set up app local store
-  }, [])
+    dispatch(getUsers());
+    dispatch(getEvents());
+    dispatch(getUserEvents());
+  }, [dispatch])
+
 
   return (
     <div>

@@ -25,7 +25,8 @@ export default (state = initialState, action) => {
         case DELETE_EVENT_PENDING:
             return state;
         case DELETE_EVENT_SUCCESS:
-            return [...state.filter(event => event.id !== action.payload.id)];
+            let newState = state.filter(event => event.id !== action.payload.id)
+            return newState
         default:
             return state;
     }
