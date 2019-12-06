@@ -5,6 +5,7 @@ import { connect, useDispatch } from "react-redux";
 import { getUsers } from './store/users/actions';
 import { getEvents } from './store/events/actions';
 import { getUserEvents } from './store/user-events/actions';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
 
@@ -18,10 +19,12 @@ const dispatch = useDispatch()
 
 
   return (
-    <div>
-      <TopNav />
-      <Dashboard />
-    </div>
+    <Router>
+      <div>
+        <TopNav />
+        <Dashboard />
+      </div>
+    </Router>
   );
 }
 
