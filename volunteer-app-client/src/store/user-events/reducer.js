@@ -13,13 +13,14 @@ export default (state = initialState, action) => {
         case ADD_USEREVENT_PENDING:
             return state;
         case ADD_USEREVENT_SUCCESS:
-            return [action.payload, ...state];
+            return [action.payload[0], ...state];
         case ADD_USEREVENT_FAILED:
             return action.payload;
         case DELETE_USEREVENT_PENDING:
             return state;
         case DELETE_USEREVENT_SUCCESS:
-            return [...state.filter(event => event.id !== action.payload.id)];
+            let newState = state.filter(event => event.id !== action.payload[0].id)
+            return newState;
         default:
             return state;
     }
