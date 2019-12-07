@@ -14,7 +14,7 @@ const UserEventList = props => {
         }
     })
     // Create the list of this user's events
-    const usersEventList = thisUserEvents && thisUserEvents.map(event => <UserEvent eventDetails={event} />)
+    const usersEventList = thisUserEvents && thisUserEvents.map((event, i) => <UserEvent key={i} eventDetails={event} />)
 
     return (
     <div>{usersEventList}</div>
